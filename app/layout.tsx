@@ -12,6 +12,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+  fallback: ["system-ui", "arial"],
 })
 
 // Font files can be colocated inside of `pages`
