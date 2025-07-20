@@ -9,7 +9,7 @@ import { siteConfig } from "@/config/site"
 import { db } from "@/lib/db"
 
 // const postmarkClient = new Client(env.POSTMARK_API_TOKEN)
-const postmarkClient = new Client("")
+const postmarkClient = env.POSTMARK_API_TOKEN ? new Client(env.POSTMARK_API_TOKEN) : null
 
 export const authOptions: NextAuthOptions = {
   // huh any! I know.
