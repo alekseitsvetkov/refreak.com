@@ -1,4 +1,3 @@
-import { Inter as FontSans } from "next/font/google"
 import localFont from "next/font/local"
 
 import "@/styles/globals.css"
@@ -9,11 +8,20 @@ import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const fontSans = FontSans({
-  subsets: ["latin"],
+const fontSans = localFont({
+  src: [
+    {
+      path: "../assets/fonts/Inter-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/Inter-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
   variable: "--font-sans",
-  display: "swap",
-  fallback: ["system-ui", "arial"],
 })
 
 // Font files can be colocated inside of `pages`
