@@ -42,6 +42,12 @@ export const authOptions: NextAuthOptions = {
           },
         })
 
+        // Skip email sending if Postmark is not configured
+        if (!postmarkClient) {
+          console.log("Postmark not configured, skipping email verification")
+          return
+        }
+
         // const templateId = user?.emailVerified
         //   ? env.POSTMARK_SIGN_IN_TEMPLATE
         //   : env.POSTMARK_ACTIVATION_TEMPLATE
