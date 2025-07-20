@@ -8,7 +8,8 @@ import { env } from "@/env.mjs"
 import { siteConfig } from "@/config/site"
 import { db } from "@/lib/db"
 
-const postmarkClient = new Client(env.POSTMARK_API_TOKEN)
+// const postmarkClient = new Client(env.POSTMARK_API_TOKEN)
+const postmarkClient = new Client("")
 
 export const authOptions: NextAuthOptions = {
   // huh any! I know.
@@ -23,11 +24,14 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     GitHubProvider({
-      clientId: env.GITHUB_CLIENT_ID,
-      clientSecret: env.GITHUB_CLIENT_SECRET,
+      // clientId: env.GITHUB_CLIENT_ID,
+      // clientSecret: env.GITHUB_CLIENT_SECRET,
+      clientId: "",
+      clientSecret: "",
     }),
     EmailProvider({
-      from: env.SMTP_FROM,
+      // from: env.SMTP_FROM,
+      from: "",
       sendVerificationRequest: async ({ identifier, url, provider }) => {
         const user = await db.user.findUnique({
           where: {
@@ -38,9 +42,10 @@ export const authOptions: NextAuthOptions = {
           },
         })
 
-        const templateId = user?.emailVerified
-          ? env.POSTMARK_SIGN_IN_TEMPLATE
-          : env.POSTMARK_ACTIVATION_TEMPLATE
+        // const templateId = user?.emailVerified
+        //   ? env.POSTMARK_SIGN_IN_TEMPLATE
+        //   : env.POSTMARK_ACTIVATION_TEMPLATE
+        const templateId = ""
         if (!templateId) {
           throw new Error("Missing template id")
         }
