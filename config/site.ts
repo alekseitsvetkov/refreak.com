@@ -3,7 +3,7 @@ import { SiteConfig } from "types"
 export const siteConfig: SiteConfig = {
   name: "Refreak",
   description:
-    "An open source application built using the new router, server components and everything new in Next.js 13.",
+    "The browser extension that boosts you to the next level on FACEIT. Refreak enhances your experience on FACEIT.",
   url: "https://refreak.com",
   ogImage: "https://refreak.com/og.jpg",
   links: {
