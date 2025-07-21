@@ -17,6 +17,7 @@ import {
   MoreVertical,
   Pizza,
   Plus,
+  Rocket,
   Settings,
   SunMedium,
   Trash,
@@ -29,7 +30,9 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
-  logo: Command,
+  logo: ({ className, ...props }: LucideProps) => (
+    <Rocket className={`text-[#FF5500] ${className || ''}`} {...props} />
+  ),
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,

@@ -8,6 +8,6 @@ export const siteConfig: SiteConfig = {
   ogImage: "https://refreak.com/og.jpg",
   links: {
     twitter: "https://twitter.com/refreak",
-    github: "https://github.com/refreak",
+    github: "https://github.com/alekseitsvetkov/refreak",
   },
 }
