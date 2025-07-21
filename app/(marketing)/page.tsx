@@ -52,12 +52,12 @@ export default async function IndexPage() {
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
             It&apos;s free and open source.
           </p>
-          <div className="my-6 animate-in fade-in slide-in-from-top-4 duration-1000 delay-700 fill-mode-backwards">
+          <div className="my-6 delay-700 duration-1000 animate-in fade-in slide-in-from-top-4 fill-mode-backwards">
             <div className="hidden md:block">
               <div className="text-center drop-shadow-sm">Install on</div>
               <div className="mt-2 flex justify-center gap-4">
                 <a 
-                  className="inline-flex cursor-pointer items-center gap-2 rounded-md bg-white px-4 py-2 text-neutral-900 outline-none transition-colors hover:bg-accent hover:text-accent-foreground shadow-sm hover:shadow-md" 
+                  className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-neutral-900 shadow-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-md" 
                   href="https://chromewebstore.google.com/detail/refreak/folldcdnmjjjcamnhhlkfjbhjdmpojhc" 
                   title="Refreak for Chrome" 
                   target="_blank" 
@@ -87,7 +87,7 @@ export default async function IndexPage() {
                   Firefox
                 </a> */}
                 <a 
-                  className="inline-flex cursor-pointer items-center gap-2 rounded-md bg-white px-4 py-2 text-neutral-900 outline-none transition-colors hover:bg-accent hover:text-accent-foreground shadow-sm hover:shadow-md" 
+                  className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-neutral-900 shadow-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-md" 
                   href="https://chromewebstore.google.com/detail/refreak/folldcdnmjjjcamnhhlkfjbhjdmpojhc" 
                   title="Refreak for Edge" 
                   target="_blank" 
@@ -102,7 +102,7 @@ export default async function IndexPage() {
                   Edge
                 </a>
                 <a 
-                  className="inline-flex cursor-pointer items-center gap-2 rounded-md bg-white px-4 py-2 text-neutral-900 outline-none transition-colors hover:bg-accent hover:text-accent-foreground shadow-sm hover:shadow-md" 
+                  className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-neutral-900 shadow-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-md" 
                   href="https://chromewebstore.google.com/detail/refreak/folldcdnmjjjcamnhhlkfjbhjdmpojhc" 
                   title="Refreak for Opera" 
                   target="_blank" 
@@ -120,7 +120,7 @@ export default async function IndexPage() {
             </div>
             <div className="flex justify-center md:hidden">
               <button 
-                className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-neutral-900 outline-none transition-colors hover:bg-accent hover:text-accent-foreground shadow-sm hover:shadow-md" 
+                className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-neutral-900 shadow-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-md" 
                 type="button" 
                 id="radix-:Rnbqla:" 
                 aria-haspopup="menu" 
