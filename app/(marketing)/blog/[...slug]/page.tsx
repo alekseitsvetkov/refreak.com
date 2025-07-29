@@ -137,7 +137,7 @@ export default async function PostPage({ params }: PostPageProps) {
                   <div className="flex-1 text-left leading-tight">
                     <p className="font-medium">{author.title}</p>
                     <p className="text-[12px] text-muted-foreground">
-                      @{author.twitter}
+                      {author.twitter}
                     </p>
                   </div>
                 </Link>
