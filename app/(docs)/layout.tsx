@@ -25,14 +25,14 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
               <DocsSearch />
             </div>
             <nav className="flex space-x-4">
-              <Link
+              {/* <Link
                 href={siteConfig.links.github}
                 target="_blank"
                 rel="noreferrer"
               >
                 <Icons.gitHub className="h-7 w-7" />
                 <span className="sr-only">GitHub</span>
-              </Link>
+              </Link> */}
             </nav>
           </div>
         </div>
