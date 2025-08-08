@@ -30,8 +30,19 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
-  logo: ({ className, ...props }: LucideProps) => (
-    <Rocket className={`text-[#FF5500] ${className || ''}`} {...props} />
+  logo: ({ className, size = 24, ...props }: LucideProps & { size?: number }) => (
+    <svg 
+      width={size} 
+      height={size * (70/66)} 
+      viewBox="0 0 66 70" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      {...props}
+    >
+      <path d="M1.52943 8.80902C-1.73974 5.5562 0.579397 -0.00542724 5.2027 3.97494e-06L34.5746 0.0345086C35.9479 0.0361219 37.2645 0.57966 38.2356 1.54589L64.4706 27.6497C67.7397 30.9025 65.4206 36.4641 60.7973 36.4587L31.4254 36.4242C30.0521 36.4226 28.7355 35.879 27.7644 34.9128L1.52943 8.80902Z" fill="currentColor"/>
+      <path d="M1.52943 42.3503C-1.73974 39.0975 0.579397 33.5359 5.2027 33.5413L34.5746 33.5758C35.9479 33.5774 37.2645 34.121 38.2356 35.0872L64.4706 61.191C67.7397 64.4438 65.4206 70.0054 60.7973 70L31.4254 69.9655C30.0521 69.9639 28.7355 69.4203 27.7644 68.4541L1.52943 42.3503Z" fill="currentColor"/>
+    </svg>
   ),
   close: X,
   spinner: Loader2,
