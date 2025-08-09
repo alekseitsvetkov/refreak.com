@@ -37,6 +37,7 @@ export async function generateMetadata({
   }
 
   const url = env.NEXT_PUBLIC_APP_URL
+  const pathname = `/${page.slugAsParams}`
 
   const ogUrl = new URL(`${url}/api/og`)
   ogUrl.searchParams.set("heading", page.title)
@@ -46,11 +47,14 @@ export async function generateMetadata({
   return {
     title: page.title,
     description: page.description,
+    alternates: {
+      canonical: absoluteUrl(pathname),
+    },
     openGraph: {
       title: page.title,
       description: page.description,
       type: "article",
-      url: absoluteUrl(page.slug),
+      url: absoluteUrl(pathname),
       images: [
         {
           url: ogUrl.toString(),

@@ -1,4 +1,5 @@
 import * as React from "react"
+import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
@@ -21,6 +22,17 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
             </a>
           </p>
         </div>
+        <nav className="flex items-center gap-6 text-sm text-muted-foreground">
+          <Link href="/privacy" className="hover:text-foreground">
+            Privacy Policy
+          </Link>
+          <Link href="/terms" className="hover:text-foreground">
+            Terms
+          </Link>
+          <Link href="/support" className="hover:text-foreground">
+            Support
+          </Link>
+        </nav>
       </div>
     </footer>
   )
