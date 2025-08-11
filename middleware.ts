@@ -1,6 +1,10 @@
 import { getToken } from "next-auth/jwt"
 import { withAuth } from "next-auth/middleware"
 import { NextResponse } from "next/server"
+import createMiddleware from 'next-intl/middleware';
+import {routing} from './i18n/routing';
+
+
 
 export default withAuth(
   async function middleware(req) {
@@ -42,5 +46,6 @@ export default withAuth(
 )
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/editor/:path*", "/login", "/register"],
+  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
+  // matcher: ["/dashboard/:path*", "/editor/:path*", "/login", "/register"],
 }

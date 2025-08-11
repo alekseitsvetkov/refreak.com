@@ -1,4 +1,5 @@
 import { withContentlayer } from "next-contentlayer"
+import createNextIntlPlugin from 'next-intl/plugin';
 
 import "./env.mjs"
 
@@ -11,6 +12,22 @@ const nextConfig = {
   experimental: {
     appDir: true,
     serverComponentsExternalPackages: ["@prisma/client"],
+  },
+  i18n: {
+    locales: ['en', 'ru'],
+    defaultLocale: "en",
+    domains: [
+      {
+        domain: 'refreak.com',
+        defaultLocale: 'en',
+        locales: ['en'],
+      },
+      {
+        domain: 'refreak.ru',
+        defaultLocale: 'ru',
+        locales: ['ru'],
+      },
+    ],
   },
   webpack: (config, { isServer }) => {
     // Handle WebAssembly modules
@@ -36,4 +53,6 @@ const nextConfig = {
   },
 }
 
-export default withContentlayer(nextConfig)
+const withNextIntl = createNextIntlPlugin();
+
+export default withNextIntl(withContentlayer(nextConfig))

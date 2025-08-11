@@ -1,39 +1,16 @@
-import Link from "next/link"
+import { Link } from '@/i18n/navigation';
 
 import { env } from "@/env.mjs"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Video, EyeOff, Languages } from "lucide-react"
+import {getTranslations} from 'next-intl/server';
 
-// async function getGitHubStars(): Promise<string | null> {
-//   try {
-//     const response = await fetch(
-//       "https://api.github.com/repos/alekseitsvetkov/refreak.com",
-//       {
-//         headers: {
-//           Accept: "application/vnd.github+json",
-//           Authorization: `Bearer ${env.GITHUB_ACCESS_TOKEN}`,
-//         },
-//         next: {
-//           revalidate: 60,
-//         },
-//       }
-//     )
 
-//     if (!response?.ok) {
-//       return null
-//     }
-
-//     const json = await response.json()
-
-//     return parseInt(json["stargazers_count"]).toLocaleString()
-//   } catch (error) {
-//     return null
-//   }
-// }
 
 export default async function IndexPage() {
+  const t = await getTranslations('home');
   // const stars = await getGitHubStars()
 
   return (
@@ -41,8 +18,9 @@ export default async function IndexPage() {
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-start gap-4">
           <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-5xl">
-            Refreak is a purpose-built tool to <br /> improve your{" "}
-            <span className="text-[#FF5500]">FACEIT</span> experience
+            {t('title')}
+            {/* Refreak is a purpose-built tool to <br /> improve your{" "}
+            <span className="text-[#FF5500]">FACEIT</span> experience */}
           </h1>
           <p className="font-medium leading-normal text-muted-foreground sm:text-xl sm:leading-8">
             Meet the extension that will help you win more. <br /> Grenade
