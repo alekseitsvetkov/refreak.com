@@ -11,9 +11,8 @@ const intlMiddleware = createMiddleware(routing);
 export default withAuth(
   async function middleware(req: NextRequest) {
     // First, run i18n routing to resolve locale and rewrite paths accordingly (skip on localhost)
-    const host = req.headers.get('host') || '';
-    const isLocal = host.startsWith('localhost') || host.startsWith('127.0.0.1');
-    const i18nResponse = isLocal ? undefined : intlMiddleware(req);
+    const isDev = process.env.NODE_ENV !== 'production';
+    const i18nResponse = isDev ? undefined : intlMiddleware(req);
     if (i18nResponse) {
       // If the i18n middleware returns a response (rewrite/redirect), merge headers and continue
       // but still allow auth logic for protected routes
