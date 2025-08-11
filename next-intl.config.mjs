@@ -9,6 +9,7 @@ export default defineRouting({
     {domain: 'www.refreak.com', defaultLocale: 'en', locales: ['en']},
     {domain: 'refreak.ru', defaultLocale: 'ru', locales: ['ru']},
     {domain: 'www.refreak.ru', defaultLocale: 'ru', locales: ['ru']},
+    {domain: 'refreak-com.vercel.app', defaultLocale: 'en', locales: ['en']},
     // Local dev: keep only 'en' to avoid '/ru' prefix when localePrefix: 'never'
     {domain: 'localhost', defaultLocale: 'en', locales: ['en']},
     {domain: '127.0.0.1', defaultLocale: 'en', locales: ['en']}
