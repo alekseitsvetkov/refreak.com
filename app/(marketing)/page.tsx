@@ -13,12 +13,14 @@ export default async function IndexPage() {
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-start gap-4">
           <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-5xl">
-            {t("title")}
-            {/* Refreak is a purpose-built tool to <br /> improve your{" "}
-            <span className="text-[#FF5500]">FACEIT</span> experience */}
+            {/* {t("title")} */}
+            Refreak is a purpose-built tool to <br /> improve your{" "}
+            <span className="text-[#FF5500]">FACEIT</span> experience
           </h1>
           <p className="font-medium leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            {t("description")}
+            {/* {t("description")} */}
+            Meet the extension that will help you win more. <br /> Grenade
+            lineups, smurf detection, and interface customization.
           </p>
           <div className="my-6 delay-700 duration-1000 animate-in fade-in slide-in-from-top-4 fill-mode-backwards">
             <div className="hidden md:block">
