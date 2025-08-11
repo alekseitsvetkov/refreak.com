@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { SpeedInsights } from "@/components/speed-insights"
 
 const fontSans = localFont({
   src: [
@@ -95,6 +96,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
           <Analytics />
+          <SpeedInsights />
           <Toaster />
           <TailwindIndicator />
         </ThemeProvider>
