@@ -1,24 +1,24 @@
-import { Link } from '@/i18n/navigation';
-
 import { env } from "@/env.mjs"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Video, EyeOff, Languages } from "lucide-react"
-import {getTranslations} from 'next-intl/server';
+import { getDictionary } from "@/get-dictionary";
+import { Locale } from "@/i18n-config";
 
+export default async function IndexPage(props: {
+  params: Promise<{ lang: Locale }>;
+}) {
+  const { lang } = await props.params;
 
-
-export default async function IndexPage() {
-  const t = await getTranslations('home');
-  // const stars = await getGitHubStars()
+  const dictionary = await getDictionary(lang);
 
   return (
     <>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-start gap-4">
           <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-5xl">
-            {t('title')}
+            {dictionary["home"].title}
             {/* Refreak is a purpose-built tool to <br /> improve your{" "}
             <span className="text-[#FF5500]">FACEIT</span> experience */}
           </h1>

@@ -1,29 +1,38 @@
 import { getToken } from "next-auth/jwt"
 import { withAuth } from "next-auth/middleware"
 import { NextResponse } from "next/server"
-import createMiddleware from 'next-intl/middleware';
-import {routing} from './i18n/routing';
-
-
+import type { NextRequest } from "next/server";
 
 export default withAuth(
-  async function middleware(req) {
+  async function middleware(req: NextRequest) {
+    const pathname = req.nextUrl.pathname;
+
+    // Skip middleware for API routes and static files
+    if (pathname.startsWith('/api/') || pathname.startsWith('/_next/') || pathname.includes('.')) {
+      return null;
+    }
+
     const token = await getToken({ req })
     const isAuth = !!token
+    
     const isAuthPage =
-      req.nextUrl.pathname.startsWith("/login") ||
-      req.nextUrl.pathname.startsWith("/register")
+      pathname.startsWith("/login") ||
+      pathname.startsWith("/register")
 
     if (isAuthPage) {
       if (isAuth) {
         return NextResponse.redirect(new URL("/dashboard", req.url))
       }
-
       return null
     }
 
-    if (!isAuth) {
-      let from = req.nextUrl.pathname;
+    // Only check auth for protected routes
+    const isProtectedRoute = 
+      pathname.startsWith("/dashboard") ||
+      pathname.startsWith("/editor");
+
+    if (isProtectedRoute && !isAuth) {
+      let from = pathname;
       if (req.nextUrl.search) {
         from += req.nextUrl.search;
       }
@@ -46,6 +55,14 @@ export default withAuth(
 )
 
 export const config = {
-  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
-  // matcher: ["/dashboard/:path*", "/editor/:path*", "/login", "/register"],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
 }
