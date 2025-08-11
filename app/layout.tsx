@@ -9,7 +9,8 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SpeedInsights } from "@/components/speed-insights"
 import {NextIntlClientProvider} from 'next-intl';
-import getRequestConfig from '@/i18n/request';
+import {getLocale} from 'next-intl/server';
+import routing from '@/i18n/routing';
 
 const fontSans = localFont({
   src: [
@@ -85,7 +86,8 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const {locale, messages} = await getRequestConfig({} as any);
+  const locale = await getLocale();
+
   return (
     <html suppressHydrationWarning lang={locale}>
       <head />
@@ -96,7 +98,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           fontHeading.variable
         )}
       >
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
             <Analytics />

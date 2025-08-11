@@ -6,19 +6,19 @@ import { Video, EyeOff, Languages } from "lucide-react"
 import {getTranslations} from 'next-intl/server';
 
 export default async function IndexPage() {
-  const t = await getTranslations();
+  const t = await getTranslations('home');
 
   return (
     <>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-start gap-4">
           <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-5xl">
-            {t("home.title")}
+            {t("title")}
             {/* Refreak is a purpose-built tool to <br /> improve your{" "}
             <span className="text-[#FF5500]">FACEIT</span> experience */}
           </h1>
           <p className="font-medium leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            {t("home.description")}
+            {t("description")}
           </p>
           <div className="my-6 delay-700 duration-1000 animate-in fade-in slide-in-from-top-4 fill-mode-backwards">
             <div className="hidden md:block">
