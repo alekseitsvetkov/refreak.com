@@ -95,11 +95,11 @@ export default async function PostPage({ params }: PostPageProps) {
   )
 
   return (
-    <article className="container relative max-w-3xl py-6 lg:py-10">
+    <article className="container relative py-6 lg:py-10">
       <Link
         href="/blog"
         className={cn(
-          buttonVariants({ variant: "ghost" }),
+          buttonVariants({ variant: "outline" }),
           "absolute left-[-200px] top-14 hidden xl:inline-flex"
         )}
       >
@@ -150,8 +150,8 @@ export default async function PostPage({ params }: PostPageProps) {
         <Image
           src={post.image}
           alt={post.title}
-          width={720}
-          height={405}
+          width={960}
+          height={540}
           className="my-8 rounded-md border bg-muted transition-colors"
           priority
         />
