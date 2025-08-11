@@ -154,9 +154,9 @@ export default async function IndexPage() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="h-12 w-12"
               >
                 <path d="M4.929 4.929 19.07 19.071" />
