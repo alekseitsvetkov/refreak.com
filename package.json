@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "concurrently \"contentlayer dev\" \"next dev\"",
     "build": "contentlayer build && next build",
+    "build:og": "node scripts/generate-og.mjs",
     "turbo": "next dev --turbo",
     "start": "next start",
     "lint": "next lint",
@@ -92,6 +93,7 @@
     "stripe": "^11.18.0",
     "tailwind-merge": "^1.12.0",
     "tailwindcss-animate": "^1.0.5",
+    "ts-node": "^10.9.2",
     "zod": "^3.21.4"
   },
   "devDependencies": {

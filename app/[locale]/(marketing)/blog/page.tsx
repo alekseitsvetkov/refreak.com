@@ -9,9 +9,14 @@ export const metadata = {
   title: "Blog",
 }
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  params,
+}: {
+  params: { locale: string }
+}) {
+  const locale = params?.locale
   const posts = allPosts
-    .filter((post) => post.published)
+    .filter((post) => post.published && post.locale === locale)
     .sort((a, b) => {
       return compareDesc(new Date(a.date), new Date(b.date))
     })
@@ -55,7 +60,7 @@ export default async function BlogPage() {
                   {formatDate(post.date)}
                 </p>
               )}
-              <Link href={post.slug} className="absolute inset-0">
+              <Link href={`/${locale}${post.slug}`} className="absolute inset-0">
                 <span className="sr-only">View Article</span>
               </Link>
             </article>
