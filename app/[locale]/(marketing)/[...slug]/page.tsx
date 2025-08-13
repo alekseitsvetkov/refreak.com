@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 import { allPages } from "contentlayer/generated"
+import type { Locale } from "@/i18n/routing"
 
 import { Mdx } from "@/components/mdx-components"
 
@@ -12,19 +13,21 @@ import { absoluteUrl } from "@/lib/utils"
 
 interface PageProps {
   params: {
+    locale: Locale
     slug: string[]
   }
 }
 
-async function getPageFromParams(params) {
+async function getPageFromParams(params: PageProps["params"]) {
   const slug = params?.slug?.join("/")
-  const page = allPages.find((page) => page.slugAsParams === slug)
+  const locale = params?.locale
+  if (!slug) return null
 
-  if (!page) {
-    null
-  }
-
-  return page
+  // Try exact locale match first, then fallback to EN
+  const byLocale = allPages.find((p) => p.slugAsParams === slug && p.locale === locale)
+  if (byLocale) return byLocale
+  const fallback = allPages.find((p) => p.slugAsParams === slug && p.locale === "en")
+  return fallback ?? null
 }
 
 export async function generateMetadata({
@@ -75,6 +78,7 @@ export async function generateMetadata({
 
 export async function generateStaticParams(): Promise<PageProps["params"][]> {
   return allPages.map((page) => ({
+    locale: page.locale as Locale,
     slug: page.slugAsParams.split("/"),
   }))
 }

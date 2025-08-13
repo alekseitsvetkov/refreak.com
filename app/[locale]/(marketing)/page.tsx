@@ -1,27 +1,37 @@
-import { env } from "@/env.mjs"
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
 import { Video, EyeOff, Languages } from "lucide-react"
-import {getTranslations} from 'next-intl/server';
+import { notFound } from "next/navigation"
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Locale, routing } from "@/i18n/routing";
 
-export default async function IndexPage() {
-  const t = await getTranslations('home');
+export async function generateStaticParams() {
+  const locales = routing.locales;
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function IndexPage({
+  params: { locale },
+}: {
+  params: { locale: Locale };
+}) {
+  if (!routing.locales.includes(locale)) return notFound();
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
+  const t = await getTranslations({ locale, namespace: "home" });
 
   return (
     <>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-start gap-4">
-          <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-5xl">
-            {/* {t("title")} */}
-            Refreak is a purpose-built tool to <br /> improve your{" "}
-            <span className="text-[#FF5500]">FACEIT</span> experience
-          </h1>
-          <p className="font-medium leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            {/* {t("description")} */}
-            Meet the extension that will help you win more. <br /> Grenade
-            lineups, smurf detection, and interface customization.
-          </p>
+          <h1 
+            className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-5xl"
+            dangerouslySetInnerHTML={{ __html: t("title") }}
+          />
+          <p 
+            className="font-medium leading-normal text-muted-foreground sm:text-xl sm:leading-8"
+            dangerouslySetInnerHTML={{ __html: t("description") }}
+          />
           <div className="my-6 delay-700 duration-1000 animate-in fade-in slide-in-from-top-4 fill-mode-backwards">
             <div className="hidden md:block">
               {/* <div className="text-center drop-shadow-sm">Install on</div> */}
@@ -111,14 +121,14 @@ export default async function IndexPage() {
             </div>
             <div className="flex justify-center md:hidden">
               <button
-                className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-neutral-900 shadow-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-md"
+                className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-neutral-900 shadow-sm outline-none transition-colors hover:shadow-md"
                 type="button"
                 id="radix-:Rnbqla:"
                 aria-haspopup="menu"
                 aria-expanded="false"
                 data-state="closed"
               >
-                Install extension
+                {t("installButton")}
               </button>
             </div>
           </div>
@@ -127,22 +137,17 @@ export default async function IndexPage() {
       <section id="features" className="container space-y-6 bg-transparent">
         <div className="flex max-w-[58rem] flex-col items-start space-y-4 text-left">
           <h2 className="font-heading text-2xl leading-[1.1] sm:text-2xl md:text-5xl">
-            Features
+            {t("features.title")}
           </h2>
-          {/* <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            This project is an experiment to see how a modern app, with features
-            like auth, subscriptions, API routes, and static pages would work in
-            Next.js 13 app dir.
-          </p> */}
         </div>
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
           <div className="relative overflow-hidden rounded-lg border bg-background p-2">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
               <Video className="h-12 w-12" />
               <div className="space-y-2">
-                <h3 className="font-bold">Grenade lineups</h3>
+                <h3 className="font-bold">{t("features.grenadeLineups.title")}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Learn Counter-Strike 2 grenade lineups directly on FACEIT.
+                  {t("features.grenadeLineups.description")}
                 </p>
               </div>
             </div>
@@ -165,9 +170,9 @@ export default async function IndexPage() {
                 <circle cx="12" cy="12" r="10" />
               </svg>
               <div className="space-y-2">
-                <h3 className="font-bold">Smurf detection</h3>
+                <h3 className="font-bold">{t("features.smurfDetection.title")}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Detect potential smurf accounts automatically.
+                  {t("features.smurfDetection.description")}
                 </p>
               </div>
             </div>
@@ -176,11 +181,11 @@ export default async function IndexPage() {
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
               <EyeOff className="h-12 w-12" />
               <div className="space-y-2">
-                <h3 className="font-bold">Block ads</h3>
-                <p className="text-sm text-muted-foreground">
-                  Instantly block annoying ads, <br /> pop-ups & intrusive
-                  trackers.
-                </p>
+                <h3 className="font-bold">{t("features.blockAds.title")}</h3>
+                <p 
+                  className="text-sm text-muted-foreground"
+                  dangerouslySetInnerHTML={{ __html: t("features.blockAds.description") }}
+                />
               </div>
             </div>
           </div>
@@ -188,10 +193,9 @@ export default async function IndexPage() {
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
               <Languages className="h-12 w-12" />
               <div className="space-y-2">
-                <h3 className="font-bold">Multi-language support</h3>
+                <h3 className="font-bold">{t("features.multiLanguage.title")}</h3>
                 <p className="text-sm text-muted-foreground">
-                  We currently support English and Russian, and we will soon add
-                  more languages.
+                  {t("features.multiLanguage.description")}
                 </p>
               </div>
             </div>
@@ -245,11 +249,11 @@ export default async function IndexPage() {
         </div>
         <div className="text-left md:max-w-[58rem]">
           <p className="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Refreak is developed independently, and is not officially endorsed
-            by or affiliated with FACEIT.
+            {t("footer")}
           </p>
         </div>
       </section>
     </>
   )
 }
+

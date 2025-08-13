@@ -3,16 +3,35 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
+// import readingTime from "reading-time"
+
+const getLocale = (path) => {
+  const pathArray = path.split(".")
+  return pathArray.length > 2 ? pathArray.slice(-2)[0] : "en"
+}
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
     type: "string",
-    resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    resolve: (doc) =>
+      `/${doc._raw.flattenedPath.replace(/\.(ru|en)(\.mdx)?$/, "")}`,
   },
   slugAsParams: {
     type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    resolve: (doc) =>
+      doc._raw.flattenedPath
+        .split("/")
+        .slice(1)
+        .join("/")
+        .replace(/\.(ru|en)(\.mdx)?$/, ""),
+  },
+  //readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
+  locale: {
+    type: "string",
+    resolve: (doc) => {
+      return getLocale(doc._raw.sourceFilePath)
+    },
   },
 }
 

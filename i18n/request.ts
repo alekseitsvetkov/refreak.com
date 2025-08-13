@@ -1,11 +1,8 @@
-import 'server-only';
+import { getRequestConfig } from "next-intl/server";
+import { hasLocale } from "next-intl";
+import { routing } from "./routing";
 
-import {getRequestConfig} from 'next-intl/server';
-import {hasLocale} from 'next-intl';
-import routing from './routing';
-
-// Loads messages for the resolved locale. The locale is resolved by the middleware.
-export default getRequestConfig(async ({requestLocale}) => {
+export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;
   const locale = hasLocale(routing.locales, requested)
     ? requested
@@ -13,8 +10,6 @@ export default getRequestConfig(async ({requestLocale}) => {
 
   return {
     locale,
-    messages: (await import(`@/messages/${locale}.json`)).default
+    messages: (await import(`../messages/${locale}.json`)).default,
   };
 });
-
-

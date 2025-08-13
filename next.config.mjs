@@ -1,19 +1,14 @@
-import { withContentlayer } from "next-contentlayer"
-import createNextIntlPlugin from 'next-intl/plugin';
-
 import "./env.mjs"
+import { withContentlayer } from "next-contentlayer";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ["avatars.githubusercontent.com"],
-  },
-  async rewrites() {
-    return [
-      {source: '/:locale(en|ru)', destination: '/'},
-      {source: '/:locale(en|ru)/:path*', destination: '/:path*'}
-    ];
   },
   experimental: {
     appDir: true,
@@ -42,7 +37,5 @@ const nextConfig = {
     return config
   },
 }
-
-const withNextIntl = createNextIntlPlugin();
 
 export default withContentlayer(withNextIntl(nextConfig))

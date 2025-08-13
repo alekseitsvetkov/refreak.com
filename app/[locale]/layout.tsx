@@ -2,25 +2,31 @@ import localFont from "next/font/local"
 
 import "@/styles/globals.css"
 import { siteConfig } from "@/config/site"
-import { absoluteUrl, cn } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster" 
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SpeedInsights } from "@/components/speed-insights"
-import {NextIntlClientProvider} from 'next-intl';
-import {getLocale} from 'next-intl/server';
-import routing from '@/i18n/routing';
+import { NextIntlClientProvider } from 'next-intl';
+import { setRequestLocale } from "next-intl/server";
+import { hasLocale } from "next-intl";
+import { notFound } from "next/navigation";
+import { Locale, routing } from "@/i18n/routing";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 const fontSans = localFont({
   src: [
     {
-      path: "../assets/fonts/Inter-Regular.ttf",
+      path: "../../assets/fonts/Inter-Regular.ttf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../assets/fonts/Inter-Bold.ttf",
+      path: "../../assets/fonts/Inter-Bold.ttf",
       weight: "700",
       style: "normal",
     },
@@ -30,12 +36,13 @@ const fontSans = localFont({
 
 // Font files can be colocated inside of `pages`
 const fontHeading = localFont({
-  src: "../assets/fonts/CalSans-SemiBold.woff2",
+  src: "../../assets/fonts/CalSans-SemiBold.woff2",
   variable: "--font-heading",
 })
 
 interface RootLayoutProps {
   children: React.ReactNode
+  params: Promise<{ locale: Locale }>
 }
 
 export const metadata = {
@@ -85,8 +92,14 @@ export const metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
-export default async function RootLayout({ children }: RootLayoutProps) {
-  const locale = await getLocale();
+export default async function RootLayout({ children, params }: RootLayoutProps) {
+  const { locale = "en" } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  // Enable static rendering
+  setRequestLocale(locale);
 
   return (
     <html suppressHydrationWarning lang={locale}>

@@ -8,6 +8,10 @@ module.exports = {
     "./ui/**/*.{ts,tsx}",
     "./content/**/*.{md,mdx}",
   ],
+  // Ensure classes used inside JSON (e.g., translations) aren't purged
+  safelist: [
+    'text-[#FF5500]',
+  ],
   darkMode: ["class"],
   theme: {
     container: {
