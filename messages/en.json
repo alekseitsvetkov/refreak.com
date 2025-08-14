@@ -29,5 +29,13 @@
     "privacyPolicy": "Privacy Policy",
     "terms": "Terms",
     "support": "Support"
+  },
+  "blog": {
+    "seeAllPosts": "See all posts",
+    "publishedOn": "Published on",
+    "title": "Blog",
+    "description": "A blog built using Contentlayer. Posts are written in MDX.",
+    "noPosts": "No posts published.",
+    "viewArticle": "View Article"
   }
 }

@@ -12,6 +12,8 @@ import { env } from "@/env.mjs"
 import { absoluteUrl, cn, formatDate } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
+import { getTranslations } from "next-intl/server"
+import { setRequestLocale } from "next-intl/server"
 
 interface PostPageProps {
   params: {
@@ -123,6 +125,11 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound()
   }
 
+  // Enable static rendering
+  setRequestLocale(params.locale)
+
+  const t = await getTranslations({ locale: params.locale, namespace: "blog" })
+
   const authors = post.authors.map((author) =>
     allAuthors.find(({ slug }) => slug === `/authors/${author}`)
   )
@@ -139,7 +146,7 @@ export default async function PostPage({ params }: PostPageProps) {
         )}
       >
         <Icons.chevronLeft className="mr-2 h-4 w-4" />
-        See all posts
+        {t("seeAllPosts")}
       </Link>
       <div>
         {post.date && (
@@ -147,7 +154,7 @@ export default async function PostPage({ params }: PostPageProps) {
             dateTime={post.date}
             className="block text-sm text-muted-foreground"
           >
-            Published on {formatDate(post.date)}
+            {t("publishedOn")} {formatDate(post.date)}
           </time>
         )}
         <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
@@ -196,7 +203,7 @@ export default async function PostPage({ params }: PostPageProps) {
           className={cn(buttonVariants({ variant: "ghost" }))}
         >
           <Icons.chevronLeft className="mr-2 h-4 w-4" />
-          See all posts
+          {t("seeAllPosts")}
         </Link>
       </div>
     </article>
