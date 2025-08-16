@@ -1,4 +1,5 @@
 import localFont from "next/font/local"
+import { Inter } from "next/font/google"
 
 import "@/styles/globals.css"
 import { siteConfig } from "@/config/site"
@@ -18,26 +19,15 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const fontSans = localFont({
-  src: [
-    {
-      path: "../../assets/fonts/Inter-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../assets/fonts/Inter-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-sans",
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
 })
 
-// Font files can be colocated inside of `pages`
-const fontHeading = localFont({
+const calSans = localFont({
   src: "../../assets/fonts/CalSans-SemiBold.woff2",
-  variable: "--font-heading",
+  variable: "--font-cal-sans",
 })
 
 interface RootLayoutProps {
@@ -107,8 +97,8 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-          fontHeading.variable
+          inter.variable,
+          calSans.variable,
         )}
       >
         <NextIntlClientProvider>
