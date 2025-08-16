@@ -17,18 +17,18 @@ interface MainNavProps {
 
 export function MainNav({ items, children }: MainNavProps) {
   const segment = useSelectedLayoutSegment()
-  const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
+  // const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
 
   return (
     <div className="flex gap-6 md:gap-10">
-      <Link href="/" className="hidden items-center space-x-3 md:flex">
+      <Link href="/" className="flex items-center space-x-3">
         <Icons.logo />
-        <span className="hidden font-bold sm:inline-block">
+        <span className="flex-1 font-bold">
           {siteConfig.name}
         </span>
       </Link>
       {items?.length ? (
-        <nav className="hidden gap-6 md:flex">
+        <nav className="gap-6 md:flex">
           {items?.map((item, index) => (
             <Link
               key={index}
@@ -46,16 +46,16 @@ export function MainNav({ items, children }: MainNavProps) {
           ))}
         </nav>
       ) : null}
-      <button
+      {/* <button
         className="flex items-center space-x-2 md:hidden"
         onClick={() => setShowMobileMenu(!showMobileMenu)}
       >
         {showMobileMenu ? <Icons.close /> : <Icons.logo />}
         <span className="font-bold">Menu</span>
-      </button>
-      {showMobileMenu && items && (
+      </button> */}
+      {/* {showMobileMenu && items && (
         <MobileNav items={items}>{children}</MobileNav>
-      )}
+      )} */}
     </div>
   )
 }

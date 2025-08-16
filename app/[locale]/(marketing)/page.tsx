@@ -32,7 +32,7 @@ export default async function IndexPage({
             className="font-medium leading-normal text-muted-foreground sm:text-xl sm:leading-8"
             dangerouslySetInnerHTML={{ __html: t("description") }}
           />
-          <div className="my-6 delay-700 duration-1000 animate-in fade-in slide-in-from-top-4 fill-mode-backwards">
+          <div className="xs:animate-none my-6 delay-700 duration-1000 animate-in fade-in slide-in-from-top-4 fill-mode-backwards">
             <div className="hidden md:block">
               {/* <div className="text-center drop-shadow-sm">Install on</div> */}
               <div className="mt-2 flex justify-center gap-4">
@@ -119,7 +119,7 @@ export default async function IndexPage({
                 </a>
               </div>
             </div>
-            <div className="flex justify-center md:hidden">
+            {/* <div className="flex justify-center md:hidden">
               <button
                 className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-neutral-900 shadow-sm outline-none transition-colors hover:shadow-md"
                 type="button"
@@ -130,7 +130,7 @@ export default async function IndexPage({
               >
                 {t("installButton")}
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
