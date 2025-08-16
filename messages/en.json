@@ -38,6 +38,9 @@
     "noPosts": "No posts published.",
     "viewArticle": "View Article"
   },
+  "navigation": {
+    "blog": "Blog"
+  },
   "date": {
     "format": {
       "long": "MMMM d, yyyy",

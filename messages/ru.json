@@ -38,6 +38,9 @@
     "noPosts": "Посты не опубликованы.",
     "viewArticle": "Посмотреть статью"
   },
+  "navigation": {
+    "blog": "Блог"
+  },
   "date": {
     "format": {
       "long": "d MMMM yyyy",
