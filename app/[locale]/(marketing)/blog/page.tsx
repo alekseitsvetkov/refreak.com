@@ -3,9 +3,9 @@ import Link from "next/link"
 import { allPosts } from "contentlayer/generated"
 import { compareDesc } from "date-fns"
 
-import { formatDate } from "@/lib/utils"
 import { getTranslations } from "next-intl/server"
 import { setRequestLocale } from "next-intl/server"
+import { DateDisplay } from "@/components/ui/date-display"
 
 export const metadata = {
   title: "Blog",
@@ -64,9 +64,11 @@ export default async function BlogPage({
                 <p className="text-muted-foreground">{post.description}</p>
               )}
               {post.date && (
-                <p className="text-sm text-muted-foreground">
-                  {formatDate(post.date)}
-                </p>
+                <DateDisplay
+                  date={post.date}
+                  format="short"
+                  className="text-sm text-muted-foreground"
+                />
               )}
               <Link href={`/${locale}${post.slug}`} className="absolute inset-0">
                 <span className="sr-only">{t("viewArticle")}</span>

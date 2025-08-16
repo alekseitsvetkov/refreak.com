@@ -34,8 +34,16 @@
     "seeAllPosts": "See all posts",
     "publishedOn": "Published on",
     "title": "Blog",
-    "description": "A blog built using Contentlayer. Posts are written in MDX.",
+    "description": "Analysis, guides, and insights on Counter-Strike 2 and FACEIT gameplay.",
     "noPosts": "No posts published.",
     "viewArticle": "View Article"
+  },
+  "date": {
+    "format": {
+      "long": "MMMM d, yyyy",
+      "short": "MMM d, yyyy",
+      "month": "MMMM yyyy",
+      "day": "d"
+    }
   }
 }

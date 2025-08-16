@@ -34,8 +34,16 @@
     "seeAllPosts": "Посмотреть все посты",
     "publishedOn": "Опубликовано",
     "title": "Блог",
-    "description": "Блог, созданный с использованием Contentlayer. Посты написаны в формате MDX.",
+    "description": "Анализ, руководства и советы по Counter-Strike 2 и геймплею на FACEIT.",
     "noPosts": "Посты не опубликованы.",
     "viewArticle": "Посмотреть статью"
+  },
+  "date": {
+    "format": {
+      "long": "d MMMM yyyy",
+      "short": "d MMM yyyy",
+      "month": "MMMM yyyy",
+      "day": "d"
+    }
   }
 }

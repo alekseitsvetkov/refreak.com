@@ -7,13 +7,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+// Импортируем новую функцию форматирования дат
+import { formatDateClient } from "./date-utils";
+
+// Оставляем старую функцию для обратной совместимости
 export function formatDate(input: string | number): string {
-  const date = new Date(input)
-  return date.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  })
+  return formatDateClient(input, "en", "long");
 }
 
 export function absoluteUrl(path: string) {

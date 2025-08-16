@@ -9,11 +9,12 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { env } from "@/env.mjs"
-import { absoluteUrl, cn, formatDate } from "@/lib/utils"
+import { absoluteUrl, cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { getTranslations } from "next-intl/server"
 import { setRequestLocale } from "next-intl/server"
+import { DateDisplay } from "@/components/ui/date-display"
 
 interface PostPageProps {
   params: {
@@ -150,12 +151,9 @@ export default async function PostPage({ params }: PostPageProps) {
       </Link>
       <div>
         {post.date && (
-          <time
-            dateTime={post.date}
-            className="block text-sm text-muted-foreground"
-          >
-            {t("publishedOn")} {formatDate(post.date)}
-          </time>
+          <div className="block text-sm text-muted-foreground">
+            {t("publishedOn")} <DateDisplay date={post.date} format="long" />
+          </div>
         )}
         <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
           {post.title}

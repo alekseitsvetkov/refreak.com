@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { UserSubscriptionPlan } from "types"
-import { cn, formatDate } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import {
   Card,
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/card"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
+import { DateDisplay } from "@/components/ui/date-display"
 
 interface BillingFormProps extends React.HTMLAttributes<HTMLFormElement> {
   subscriptionPlan: UserSubscriptionPlan & {
@@ -80,7 +81,7 @@ export function BillingForm({
               {subscriptionPlan.isCanceled
                 ? "Your plan will be canceled on "
                 : "Your plan renews on "}
-              {formatDate(subscriptionPlan.stripeCurrentPeriodEnd)}.
+              <DateDisplay date={subscriptionPlan.stripeCurrentPeriodEnd} format="short" />.
             </p>
           ) : null}
         </CardFooter>
