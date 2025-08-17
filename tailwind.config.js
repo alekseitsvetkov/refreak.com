@@ -8,20 +8,19 @@ module.exports = {
     "./ui/**/*.{ts,tsx}",
     "./content/**/*.{md,mdx}",
   ],
-  // Ensure classes used inside JSON (e.g., translations) aren't purged
-  safelist: [
-    'text-[#FF5500]',
-  ],
   darkMode: ["class"],
   theme: {
     container: {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1024px",
+        "2xl": "1200px",
       },
     },
     extend: {
+      backgroundImage: {
+        "marketing-radial": "radial-gradient(50% 85% at 50% 0%, rgba(147, 7, 7, 0.8) 0%, rgba(110, 0, 0, 0.8) 0%, rgba(0, 0, 0, 1) 100%)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

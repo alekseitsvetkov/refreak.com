@@ -23,7 +23,7 @@ export default async function IndexPage({
   return (
     <>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
-        <div className="container flex max-w-[64rem] flex-col items-start gap-4">
+        <div className="container flex flex-col items-start gap-4">
           <h1 
             className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-5xl"
             dangerouslySetInnerHTML={{ __html: t("title") }}
@@ -140,7 +140,7 @@ export default async function IndexPage({
             {t("features.title")}
           </h2>
         </div>
-        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
+        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:grid-cols-3">
           <div className="relative overflow-hidden rounded-lg border bg-background p-2">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
               <Video className="h-12 w-12" />

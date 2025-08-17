@@ -18,8 +18,12 @@ export default async function MarketingLayout({
 }: MarketingLayoutProps) {
   const t = await getTranslations({ locale: params.locale, namespace: "navigation" });
   return (
-    <div className="flex min-h-screen flex-col">
-      <header className="container fixed inset-x-0 top-0 z-40 bg-background/80 backdrop-blur-sm transition duration-700 ease-out">
+    <div className="relative flex min-h-screen flex-col">
+      {/* <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0 h-[200px] bg-marketing-radial duration-1000 ease-in-out animate-in fade-in"
+      /> */}
+      <header className="container fixed inset-x-0 top-0 z-40 bg-background/0 backdrop-blur-sm transition duration-700 ease-out">
         <div className="flex h-16 items-center justify-between py-6">
           <MainNav items={marketingConfig.mainNav} />
           <Link
@@ -33,8 +37,8 @@ export default async function MarketingLayout({
           </Link>
         </div>
       </header>
-      <main className="flex-1 pt-16">{children}</main>
-      <SiteFooter />
+      <main className="relative z-10 flex-1 pt-16">{children}</main>
+      <SiteFooter className="relative z-10" />
     </div>
   )
 }
