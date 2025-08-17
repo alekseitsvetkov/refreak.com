@@ -1,9 +1,8 @@
-import dynamic from 'next/dynamic';
+"use client";
+import React, { Suspense } from "react";
 
-const Spline = dynamic(() => import('@splinetool/react-spline'), {
-  ssr: false,
-  loading: () => <div>Loading...</div>
-});
+const LazySpline = React.lazy(() => import("@splinetool/react-spline/next"));
+
 
 export default function Home() {
   return (
@@ -13,9 +12,11 @@ export default function Home() {
         clipPath: 'inset(0 0 80px 0)',
         position: 'relative'
       }}>
-        <Spline
-          scene="https://prod.spline.design/h7PJKAlBWNMyS8wt/scene.splinecode"
-        />
+         <Suspense>
+          <LazySpline
+            scene="https://prod.spline.design/h7PJKAlBWNMyS8wt/scene.splinecode"
+          />
+        </Suspense>
       </div>
     </main>
   );
