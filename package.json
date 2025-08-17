@@ -57,6 +57,8 @@
     "@radix-ui/react-toggle": "^1.0.2",
     "@radix-ui/react-toggle-group": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.5",
+    "@splinetool/react-spline": "^4.1.0",
+    "@splinetool/runtime": "^1.10.48",
     "@t3-oss/env-nextjs": "^0.2.2",
     "@typescript-eslint/parser": "^5.59.0",
     "@vercel/analytics": "^1.5.0",
