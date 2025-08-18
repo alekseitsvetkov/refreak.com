@@ -3,7 +3,6 @@ import React, { Suspense } from "react";
 
 const LazySpline = React.lazy(() => import("@splinetool/react-spline/next"));
 
-
 export default function Home() {
   return (
     <main>
