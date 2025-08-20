@@ -143,10 +143,10 @@ export default async function PostPage({ params }: PostPageProps) {
         href={`/${post.locale}/blog`}
         className={cn(
           buttonVariants({ variant: "outline" }),
-          "absolute left-[-200px] top-14 hidden xl:inline-flex"
+          "absolute left-[-200px] top-14 hidden text-primary xl:inline-flex"
         )}
       >
-        <Icons.chevronLeft className="mr-2 h-4 w-4" />
+        <Icons.chevronLeft className="mr-2 h-4 w-4 text-primary" />
         {t("seeAllPosts")}
       </Link>
       <div>
@@ -198,9 +198,9 @@ export default async function PostPage({ params }: PostPageProps) {
       <div className="flex justify-center py-6 lg:py-10">
         <Link
           href={`/${post.locale}/blog`}
-          className={cn(buttonVariants({ variant: "ghost" }))}
+          className={cn(buttonVariants({ variant: "ghost" }), "text-primary")}
         >
-          <Icons.chevronLeft className="mr-2 h-4 w-4" />
+          <Icons.chevronLeft className="mr-2 h-4 w-4 text-primary" />
           {t("seeAllPosts")}
         </Link>
       </div>
