@@ -13,13 +13,13 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
       <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-3 md:px-0">
           <Icons.logo />
-          <p className="text-center text-sm leading-loose md:text-left">
+          <p className="text-center text-sm leading-loose text-primary md:text-left">
             {t("builtBy")}{" "}
             <a
               href="#"
               target="_self"
               rel="noreferrer"
-              className="font-medium underline underline-offset-4"
+              className="font-medium text-primary underline underline-offset-4"
             >
               base
             </a>
