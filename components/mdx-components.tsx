@@ -65,7 +65,7 @@ const components = {
     const isExternal = typeof href === "string" && /^https?:\/\//.test(href)
     return (
       <a
-        className={cn("font-medium underline underline-offset-4", className)}
+        className={cn("font-medium text-primary underline underline-offset-4", className)}
         href={href}
         target={isExternal ? "_blank" : undefined}
         rel={isExternal ? "noopener noreferrer" : undefined}
@@ -75,7 +75,7 @@ const components = {
   },
   p: ({ className, ...props }) => (
     <p
-      className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+      className={cn("leading-7 text-primary [&:not(:first-child)]:mt-6", className)}
       {...props}
     />
   ),
@@ -86,7 +86,7 @@ const components = {
     <ol className={cn("my-6 ml-6 list-decimal text-primary", className)} {...props} />
   ),
   li: ({ className, ...props }) => (
-    <li className={cn("mt-2", className)} {...props} />
+    <li className={cn("mt-2 text-primary", className)} {...props} />
   ),
   blockquote: ({ className, ...props }) => (
     <blockquote
@@ -138,7 +138,7 @@ const components = {
   pre: ({ className, ...props }) => (
     <pre
       className={cn(
-        "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4",
+        "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4 text-primary",
         className
       )}
       {...props}
@@ -147,7 +147,7 @@ const components = {
   code: ({ className, ...props }) => (
     <code
       className={cn(
-        "relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm",
+        "relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm text-primary",
         className
       )}
       {...props}
