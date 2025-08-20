@@ -143,7 +143,7 @@ export default async function IndexPage({
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:grid-cols-3">
           <div className="relative overflow-hidden rounded-lg border bg-background p-2">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <Video className="h-12 w-12" />
+              <Video className="h-12 w-12 text-primary" />
               <div className="space-y-2">
                 <h3 className="font-bold text-primary">{t("features.grenadeLineups.title")}</h3>
                 <p className="text-sm text-muted-foreground">
@@ -164,7 +164,7 @@ export default async function IndexPage({
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-12 w-12"
+                className="h-12 w-12 text-primary"
               >
                 <path d="M4.929 4.929 19.07 19.071" />
                 <circle cx="12" cy="12" r="10" />
@@ -179,7 +179,7 @@ export default async function IndexPage({
           </div>
           <div className="relative overflow-hidden rounded-lg border bg-background p-2">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <EyeOff className="h-12 w-12" />
+              <EyeOff className="h-12 w-12 text-primary" />
               <div className="space-y-2">
                 <h3 className="font-bold text-primary">{t("features.blockAds.title")}</h3>
                 <p 
@@ -191,7 +191,7 @@ export default async function IndexPage({
           </div>
           <div className="relative overflow-hidden rounded-lg border bg-background p-2">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <Languages className="h-12 w-12" />
+              <Languages className="h-12 w-12 text-primary" />
               <div className="space-y-2">
                 <h3 className="font-bold text-primary">{t("features.multiLanguage.title")}</h3>
                 <p className="text-sm text-muted-foreground">
