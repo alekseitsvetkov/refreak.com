@@ -155,7 +155,7 @@ export default async function PostPage({ params }: PostPageProps) {
             {t("publishedOn")} <DateDisplay date={post.date} format="long" />
           </div>
         )}
-        <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
+        <h1 className="mt-2 inline-block font-heading text-4xl leading-tight text-primary lg:text-5xl">
           {post.title}
         </h1>
         {authors?.length ? (
