@@ -136,7 +136,7 @@ export default async function IndexPage({
       </section>
       <section id="features" className="container space-y-6 bg-transparent">
         <div className="flex max-w-[58rem] flex-col items-start space-y-4 text-left">
-          <h2 className="font-heading text-2xl leading-[1.1] sm:text-2xl md:text-5xl">
+          <h2 className="font-heading text-2xl leading-[1.1] text-primary sm:text-2xl  md:text-5xl">
             {t("features.title")}
           </h2>
         </div>
@@ -145,7 +145,7 @@ export default async function IndexPage({
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
               <Video className="h-12 w-12" />
               <div className="space-y-2">
-                <h3 className="font-bold">{t("features.grenadeLineups.title")}</h3>
+                <h3 className="font-bold text-primary">{t("features.grenadeLineups.title")}</h3>
                 <p className="text-sm text-muted-foreground">
                   {t("features.grenadeLineups.description")}
                 </p>
@@ -170,7 +170,7 @@ export default async function IndexPage({
                 <circle cx="12" cy="12" r="10" />
               </svg>
               <div className="space-y-2">
-                <h3 className="font-bold">{t("features.smurfDetection.title")}</h3>
+                <h3 className="font-bold text-primary">{t("features.smurfDetection.title")}</h3>
                 <p className="text-sm text-muted-foreground">
                   {t("features.smurfDetection.description")}
                 </p>
@@ -181,7 +181,7 @@ export default async function IndexPage({
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
               <EyeOff className="h-12 w-12" />
               <div className="space-y-2">
-                <h3 className="font-bold">{t("features.blockAds.title")}</h3>
+                <h3 className="font-bold text-primary">{t("features.blockAds.title")}</h3>
                 <p 
                   className="text-sm text-muted-foreground"
                   dangerouslySetInnerHTML={{ __html: t("features.blockAds.description") }}
@@ -193,7 +193,7 @@ export default async function IndexPage({
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
               <Languages className="h-12 w-12" />
               <div className="space-y-2">
-                <h3 className="font-bold">{t("features.multiLanguage.title")}</h3>
+                <h3 className="font-bold text-primary">{t("features.multiLanguage.title")}</h3>
                 <p className="text-sm text-muted-foreground">
                   {t("features.multiLanguage.description")}
                 </p>

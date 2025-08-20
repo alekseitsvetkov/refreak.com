@@ -23,7 +23,7 @@ export function MainNav({ items, children }: MainNavProps) {
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="flex items-center space-x-3">
         <Icons.logo />
-        <span className="flex-1 font-bold">
+        <span className="flex-1 font-bold text-primary">
           {siteConfig.name}
         </span>
       </Link>
