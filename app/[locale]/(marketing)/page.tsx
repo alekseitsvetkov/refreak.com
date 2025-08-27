@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Locale, routing } from "@/i18n/routing";
 import { absoluteUrl } from "@/lib/utils";
+import { SchemaMarkup } from "@/components/schema-markup";
 
 export async function generateStaticParams() {
   const locales = routing.locales;
@@ -44,6 +45,7 @@ export default async function IndexPage({
 
   return (
     <>
+      <SchemaMarkup locale={locale} />
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex flex-col items-start gap-4">
           <h1 

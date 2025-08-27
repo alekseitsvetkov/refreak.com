@@ -15,6 +15,7 @@ import { Icons } from "@/components/icons"
 import { getTranslations } from "next-intl/server"
 import { setRequestLocale } from "next-intl/server"
 import { DateDisplay } from "@/components/ui/date-display"
+import { BlogSchemaMarkup } from "@/components/blog-schema-markup"
 
 interface PostPageProps {
   params: {
@@ -138,7 +139,19 @@ export default async function PostPage({ params }: PostPageProps) {
   // Use the image defined in the blog frontmatter for the in-page hero
 
   return (
-    <article className="container relative py-6 lg:py-10">
+    <>
+      <BlogSchemaMarkup
+        post={{
+          title: post.title,
+          description: post.description || "",
+          date: post.date,
+          slug: post.slugAsParams,
+          image: post.image,
+          author: authors?.[0]?.title,
+        }}
+        locale={params.locale}
+      />
+      <article className="container relative py-6 lg:py-10">
       <Link
         href={`/${post.locale}/blog`}
         className={cn(
@@ -205,5 +218,6 @@ export default async function PostPage({ params }: PostPageProps) {
         </Link>
       </div>
     </article>
+    </>
   )
 }

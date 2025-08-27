@@ -7,6 +7,7 @@ import { getTranslations } from "next-intl/server"
 import { setRequestLocale } from "next-intl/server"
 import { DateDisplay } from "@/components/ui/date-display"
 import { absoluteUrl } from "@/lib/utils"
+import { SchemaMarkup } from "@/components/schema-markup"
 
 export async function generateMetadata({
   params: { locale },
@@ -48,7 +49,15 @@ export default async function BlogPage({
     })
 
   return (
-    <div className="container py-6 lg:py-10">
+    <>
+      <SchemaMarkup 
+        includeOrganization={true}
+        includeWebSite={true}
+        includeSoftwareApplication={false}
+        includeFAQ={false}
+        locale={locale}
+      />
+      <div className="container py-6 lg:py-10">
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1 space-y-4">
           <h1 className="inline-block font-heading text-4xl tracking-tight text-primary lg:text-5xl">
@@ -98,5 +107,6 @@ export default async function BlogPage({
         <p>{t("noPosts")}</p>
       )}
     </div>
+    </>
   )
 }
