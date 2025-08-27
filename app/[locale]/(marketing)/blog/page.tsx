@@ -6,9 +6,27 @@ import { compareDesc } from "date-fns"
 import { getTranslations } from "next-intl/server"
 import { setRequestLocale } from "next-intl/server"
 import { DateDisplay } from "@/components/ui/date-display"
+import { absoluteUrl } from "@/lib/utils"
 
-export const metadata = {
-  title: "Blog",
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const pathname = `/${locale}/blog`;
+  
+  // Enable static rendering for metadata
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "blog" });
+  
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://refreak.com"),
+    alternates: {
+      canonical: absoluteUrl(pathname),
+    },
+  };
 }
 
 export default async function BlogPage({

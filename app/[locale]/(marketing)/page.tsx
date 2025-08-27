@@ -2,10 +2,32 @@ import { Video, EyeOff, Languages } from "lucide-react"
 import { notFound } from "next/navigation"
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Locale, routing } from "@/i18n/routing";
+import { absoluteUrl } from "@/lib/utils";
 
 export async function generateStaticParams() {
   const locales = routing.locales;
   return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: Locale };
+}) {
+  const pathname = `/${locale}`;
+  
+  // Enable static rendering for metadata
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "home" });
+  
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://refreak.com"),
+    alternates: {
+      canonical: absoluteUrl(pathname),
+    },
+  };
 }
 
 export default async function IndexPage({
