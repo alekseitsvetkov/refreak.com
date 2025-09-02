@@ -67,7 +67,7 @@ export function getSoftwareApplicationSchema(locale: string = "en") {
     data: {
       name: isRussian ? "Расширение Refreak для браузера" : "Refreak Browser Extension",
       description: isRussian 
-        ? "Браузерное расширение, которое улучшает игровой опыт на FACEIT с помощью лайнапов гранат, обнаружения смаруфов и настройки интерфейса."
+        ? "Браузерное расширение, которое улучшает игровой опыт на FACEIT с помощью лайнапов гранат, обнаружения смурфов и настройки интерфейса."
         : "A browser extension that enhances FACEIT gaming experience with grenade lineups, smurf detection, and interface customization.",
       applicationCategory: "Game",
       operatingSystem: "Chrome, Edge, Opera",
@@ -76,11 +76,11 @@ export function getSoftwareApplicationSchema(locale: string = "en") {
       installUrl: "https://chromewebstore.google.com/detail/refreak/folldcdnmjjjcamnhhlkfjbhjdmpojhc",
       softwareVersion: "1.0.0",
       releaseNotes: isRussian 
-        ? "Первоначальный релиз с лайнапами гранат, обнаружением смаруфов и функциями блокировки рекламы."
+        ? "Первоначальный релиз с лайнапами гранат, обнаружением смурфов и функциями блокировки рекламы."
         : "Initial release with grenade lineups, smurf detection, and ad blocking features.",
       featureList: isRussian ? [
         "Лайнапы гранат для Counter-Strike 2",
-        "Обнаружение смаруф-аккаунтов",
+        "Обнаружение смурф-аккаунтов",
         "Блокировка рекламы и всплывающих окон",
         "Многоязычная поддержка (английский, русский)",
         "Настройка интерфейса FACEIT",
@@ -117,7 +117,7 @@ export function getFAQSchema(locale: string = "en") {
       name: "Что такое Refreak?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Refreak — это браузерное расширение, разработанное для улучшения вашего игрового опыта на FACEIT. Оно предоставляет лайнапы гранат, обнаружение смаруфов, блокировку рекламы и настройки интерфейса.",
+        text: "Refreak — это браузерное расширение, разработанное для улучшения вашего игрового опыта на FACEIT. Оно предоставляет лайнапы гранат, обнаружение смурфов, блокировку рекламы и настройки интерфейса.",
       },
     },
     {
