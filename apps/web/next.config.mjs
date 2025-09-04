@@ -17,6 +17,10 @@ const nextConfig = {
     // Ignore TypeScript errors during build for now
     ignoreBuildErrors: true,
   },
+  // Disable styled-jsx to prevent context issues during prerendering
+  compiler: {
+    styledComponents: false,
+  },
   webpack: (config, { isServer }) => {
     // Handle WebAssembly modules
     config.experiments = {
