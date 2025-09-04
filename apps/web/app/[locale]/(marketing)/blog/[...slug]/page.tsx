@@ -159,7 +159,7 @@ export default async function PostPage({ params }: PostPageProps) {
           "absolute left-[-200px] top-14 hidden text-primary xl:inline-flex"
         )}
       >
-        <Icons.chevronLeft className="mr-2 h-4 w-4 text-primary" />
+        <Icons.chevronLeft className="mr-2 size-4 text-primary" />
         {t("seeAllPosts")}
       </Link>
       <div>
@@ -213,7 +213,7 @@ export default async function PostPage({ params }: PostPageProps) {
           href={`/${post.locale}/blog`}
           className={cn(buttonVariants({ variant: "ghost" }), "text-primary")}
         >
-          <Icons.chevronLeft className="mr-2 h-4 w-4 text-primary" />
+          <Icons.chevronLeft className="mr-2 size-4 text-primary" />
           {t("seeAllPosts")}
         </Link>
       </div>
