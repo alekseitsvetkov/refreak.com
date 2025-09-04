@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { allPages } from "contentlayer/generated"
+import { allPages } from "@/.contentlayer/generated"
 import type { Locale } from "@/i18n/routing"
 
 import { Mdx } from "@/components/mdx-components"

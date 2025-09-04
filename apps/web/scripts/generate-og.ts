@@ -6,7 +6,7 @@
 
 import fs from "fs"
 import path from "path"
-import { allPosts } from "contentlayer/generated"
+import { allPosts } from "@/.contentlayer/generated"
 
 async function ensureDir(dir: string) {
   await fs.promises.mkdir(dir, { recursive: true })
