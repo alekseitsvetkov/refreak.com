@@ -91,7 +91,7 @@ export function Player({
         style={{ width: "100%", height: "100%", position: "relative" }}
       >
         <Poster
-          className="absolute inset-0 block h-full w-full opacity-0 transition-opacity data-[visible]:opacity-100 object-cover"
+          className="absolute inset-0 block size-full opacity-0 transition-opacity data-[visible]:opacity-100 object-cover"
           src={poster}
           alt={title}
         />

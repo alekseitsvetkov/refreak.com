@@ -56,7 +56,7 @@ export function MapsGrid({ maps, isLoading, onMapSelect }: MapsGridProps) {
               <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-orange-500 transition-colors duration-300 z-20 pointer-events-none" />
             )}
             <div
-              className={`absolute top-0 left-0 h-full w-full inset-0 transition-colors duration-300 ${
+              className={`absolute top-0 left-0 size-full inset-0 transition-colors duration-300 ${
                 hasVideos
                   ? "bg-black/60 group-hover:bg-black/50"
                   : "bg-black/85"

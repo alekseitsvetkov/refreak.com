@@ -42,6 +42,7 @@ export async function GET(req: Request) {
           }}
         >
           {bg ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={bg}
               tw="absolute inset-0 w-full h-full object-cover"

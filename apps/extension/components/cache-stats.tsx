@@ -57,7 +57,7 @@ export function CacheStats() {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Database className="h-4 w-4" />
+          <Database className="size-4" />
           Cache Statistics
         </CardTitle>
       </CardHeader>
@@ -111,7 +111,7 @@ export function CacheStats() {
               onClick={handleClearPlayerCache}
               className="flex items-center gap-1"
             >
-              <Trash2 className="h-3 w-3" />
+              <Trash2 className="size-3" />
               Clear Players
             </Button>
             <Button
@@ -120,7 +120,7 @@ export function CacheStats() {
               onClick={handleClearStatsCache}
               className="flex items-center gap-1"
             >
-              <Trash2 className="h-3 w-3" />
+              <Trash2 className="size-3" />
               Clear Stats
             </Button>
           </div>
@@ -130,7 +130,7 @@ export function CacheStats() {
             onClick={handleClearAllCache}
             className="w-full flex items-center gap-1"
           >
-            <Trash2 className="h-3 w-3" />
+            <Trash2 className="size-3" />
             Clear All Cache
           </Button>
         </div>

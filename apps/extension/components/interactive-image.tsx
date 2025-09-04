@@ -410,7 +410,7 @@ export function InteractiveImage({
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
         onDoubleClick={handleDoubleClick}
-        className="relative h-full w-full overflow-hidden"
+        className="relative size-full overflow-hidden"
         style={{
           touchAction: "none",
           cursor: isDragging ? "grabbing" : "grab",

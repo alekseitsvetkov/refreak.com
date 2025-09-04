@@ -144,7 +144,7 @@ export function GrenadesDialog({ container }: GrenadesDialogProps) {
         <Button
           variant="default"
           size="sm"
-          className="w-full bg-[#f1f1f1]/[0.08] hover:bg-[#f1f1f1]/[0.10] text-[#a7a7a7] justify-start border-none hover:cursor-pointer h-10 font-normal text-base shine-container p-[1px]"
+          className="w-full bg-[#f1f1f1]/[0.08] hover:bg-[#f1f1f1]/[0.10] text-[#a7a7a7] justify-start border-none hover:cursor-pointer h-10 font-normal text-base shine-container p-px"
         >
           <span className="shine-stripe" />
           <span className="shine-inner bg-[#242424] hover:bg-[#242424] px-3 gap-3">
@@ -166,7 +166,7 @@ export function GrenadesDialog({ container }: GrenadesDialogProps) {
                 className="hover:cursor-pointer"
                 onClick={handleBack}
               >
-                <ArrowLeft className="h-4 w-4" /> {t("maps")}
+                <ArrowLeft className="size-4" /> {t("maps")}
               </Button>
               <div className="text-center text-2xl font-bold flex-1">
                 {currentMap?.name}

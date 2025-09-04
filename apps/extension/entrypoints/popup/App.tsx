@@ -104,21 +104,21 @@ function App() {
             value="home"
             className="data-[state=active]:after:bg-primary relative rounded-none py-2 px-4 flex items-center gap-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none flex-1"
           >
-            <House className="h-4 w-4" />
+            <House className="size-4" />
             {localT("home")}
           </TabsTrigger>
           <TabsTrigger
             value="features"
             className="data-[state=active]:after:bg-primary relative rounded-none py-2 px-4 flex items-center gap-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none flex-1"
           >
-            <Rocket className="h-4 w-4" />
+            <Rocket className="size-4" />
             {localT("features")}
           </TabsTrigger>
           {/* <TabsTrigger
             value="settings"
             className="data-[state=active]:after:bg-primary relative rounded-none py-2 px-4 flex items-center gap-2 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none flex-1"
           >
-            <Settings className="h-4 w-4" />
+            <Settings className="size-4" />
             {localT("settings")}
           </TabsTrigger> */}
         </TabsList>

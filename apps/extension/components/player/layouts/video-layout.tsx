@@ -23,7 +23,7 @@ export function VideoLayout({ thumbnails }: VideoLayoutProps) {
       <Captions
         className={`${captionStyles.captions} absolute inset-0 bottom-2 z-10 select-none break-words opacity-0 transition-[opacity,bottom] duration-300 data-[visible]:opacity-100`}
       />
-      <Controls.Root className="absolute inset-0 z-10 flex h-full w-full flex-col bg-gradient-to-t from-black/10 to-transparent opacity-0 transition-opacity data-[visible]:opacity-100">
+      <Controls.Root className="absolute inset-0 z-10 flex size-full flex-col bg-gradient-to-t from-black/10 to-transparent opacity-0 transition-opacity data-[visible]:opacity-100">
         <Tooltip.Provider>
           <div className="flex-1" />
 
@@ -53,12 +53,12 @@ function Gestures() {
   return (
     <>
       <Gesture
-        className="absolute inset-0 z-0 block h-full w-full"
+        className="absolute inset-0 z-0 block size-full"
         event="pointerup"
         action="toggle:paused"
       />
       <Gesture
-        className="absolute inset-0 z-0 block h-full w-full"
+        className="absolute inset-0 z-0 block size-full"
         event="dblpointerup"
         action="toggle:fullscreen"
       />

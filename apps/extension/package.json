@@ -13,7 +13,8 @@
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare",
-    "build:css": "tailwindcss -i ./assets/tailwind.css -o ./assets/output.css --minify"
+    "build:css": "tailwindcss -i ./assets/tailwind.css -o ./assets/output.css --minify",
+    "deps:update": "npx npm-check-updates --interactive --format group"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",

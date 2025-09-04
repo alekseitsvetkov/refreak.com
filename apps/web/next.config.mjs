@@ -10,9 +10,6 @@ const nextConfig = {
   images: {
     domains: ["avatars.githubusercontent.com"],
   },
-  experimental: {
-    serverComponentsExternalPackages: ["@prisma/client"],
-  },
   typescript: {
     // Ignore TypeScript errors during build for now
     ignoreBuildErrors: true,
