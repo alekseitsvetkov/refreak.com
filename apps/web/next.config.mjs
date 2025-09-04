@@ -12,6 +12,7 @@ const nextConfig = {
   },
   experimental: {
     serverComponentsExternalPackages: ["@prisma/client"],
+    styledJsx: false,
   },
   typescript: {
     // Ignore TypeScript errors during build for now

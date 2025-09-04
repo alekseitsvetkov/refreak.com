@@ -15,15 +15,47 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100">500</h1>
-        <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
+    <div style={{
+      display: 'flex',
+      minHeight: '100vh',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'system-ui, sans-serif'
+    }}>
+      <div style={{ textAlign: 'center' }}>
+        <h1 style={{
+          fontSize: '2.25rem',
+          fontWeight: 'bold',
+          color: '#111827',
+          margin: 0
+        }}>500</h1>
+        <p style={{
+          marginTop: '0.5rem',
+          fontSize: '1.125rem',
+          color: '#4b5563',
+          margin: '0.5rem 0 0 0'
+        }}>
           Something went wrong!
         </p>
         <button
           onClick={reset}
-          className="mt-4 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+          style={{
+            marginTop: '1rem',
+            borderRadius: '0.375rem',
+            backgroundColor: '#2563eb',
+            color: 'white',
+            padding: '0.5rem 1rem',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '1rem'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = '#1d4ed8'
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = '#2563eb'
+          }}
         >
           Try again
         </button>
