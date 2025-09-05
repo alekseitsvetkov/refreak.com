@@ -4,11 +4,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Locale, routing } from "@/i18n/routing";
 import { absoluteUrl } from "@/lib/utils";
 import { SchemaMarkup } from "@/components/schema-markup";
-
-export async function generateStaticParams() {
-  const locales = routing.locales;
-  return locales.map((locale) => ({ locale }));
-}
+import { use } from "react";
+import { useTranslations } from "next-intl";
 
 export async function generateMetadata({
   params,
@@ -18,8 +15,8 @@ export async function generateMetadata({
   const { locale } = await params;
   const pathname = `/${locale}`;
   
-  // Enable static rendering for metadata
-  setRequestLocale(locale);
+  // // Enable static rendering for metadata
+  // setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "home" });
   
   return {
@@ -32,18 +29,17 @@ export async function generateMetadata({
   };
 }
 
-export default async function IndexPage({
+export default function IndexPage({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
 }) {
-  const { locale } = await params;
-  if (!routing.locales.includes(locale)) return notFound();
+  const {locale} = use(params);
 
   // Enable static rendering
   setRequestLocale(locale);
 
-  const t = await getTranslations({ locale, namespace: "home" });
+  const t = useTranslations('home');
 
   return (
     <>

@@ -11,5 +11,6 @@ const locales: Locale[] = ["en", "ru"];
 
 export const routing = defineRouting({
   locales,
-  defaultLocale: "en"
+  defaultLocale: "en",
+  localePrefix: "always"
 });

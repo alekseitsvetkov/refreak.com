@@ -1,34 +1,19 @@
-import localFont from "next/font/local"
-import { Inter } from "next/font/google"
-
 import "../../styles/globals.css"
 import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
+
 import { Toaster } from "@/components/ui/toaster" 
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SpeedInsights } from "@/components/speed-insights"
-import { NextIntlClientProvider } from 'next-intl';
-import { setRequestLocale } from "next-intl/server";
-import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const calSans = localFont({
-  src: "../../assets/fonts/CalSans-SemiBold.woff2",
-  variable: "--font-cal-sans",
-})
+import { getMessages } from "next-intl/server";
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { setRequestLocale } from "next-intl/server";
+import localFont from "next/font/local"
+import { Inter } from "next/font/google"
+import { cn } from "@/lib/utils"
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -86,7 +71,28 @@ export const viewport = {
   ],
 }
 
-export default async function RootLayout({ children, params }: RootLayoutProps) {
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const calSans = localFont({
+  src: "../../assets/fonts/CalSans-SemiBold.woff2",
+  variable: "--font-cal-sans",
+})
+
+interface RootLayoutProps {
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
+}
+
+export default async function LocaleLayout({ children, params }: RootLayoutProps) {
+  console.log('params', await params)
   const { locale = "en" } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -94,26 +100,24 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 
   // Enable static rendering
   setRequestLocale(locale);
+    // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages(); 
 
   return (
     <html suppressHydrationWarning lang={locale}>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          inter.variable,
-          calSans.variable,
-        )}
-      >
-        <NextIntlClientProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
-            <Analytics />
-            <SpeedInsights />
-            <Toaster />
-            <TailwindIndicator />
-          </ThemeProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <body
+    className={cn(
+      "min-h-screen bg-background font-sans antialiased",
+      inter.variable,
+      calSans.variable,
+    )}
+  ><NextIntlClientProvider messages={messages}><ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      {children}
+      <Analytics />
+      <SpeedInsights />
+      <Toaster />
+      <TailwindIndicator />
+    </ThemeProvider></NextIntlClientProvider></body></html>
   )
 }
