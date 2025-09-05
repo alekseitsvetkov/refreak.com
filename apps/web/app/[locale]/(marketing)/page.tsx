@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
   const pathname = `/${locale}`;
@@ -35,7 +35,7 @@ export async function generateMetadata({
 export default async function IndexPage({
   params,
 }: {
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
   if (!routing.locales.includes(locale)) return notFound();

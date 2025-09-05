@@ -1,16 +1,18 @@
-// TODO: Fix this when we turn strict mode on.
-
 import { toc } from "mdast-util-toc"
 import { remark } from "remark"
 import { visit } from "unist-util-visit"
+import type { Node } from "unist"
+import type { Root } from "mdast"
 
 const textTypes = ["text", "emphasis", "strong", "inlineCode"]
 
-function flattenNode(node) {
-  const p = []
-  visit(node, (node) => {
+function flattenNode(node: Node): string {
+  const p: string[] = []
+  visit(node, (node: Node) => {
     if (!textTypes.includes(node.type)) return
-    p.push(node.value)
+    if ('value' in node && typeof node.value === 'string') {
+      p.push(node.value)
+    }
   })
   return p.join(``)
 }
@@ -25,14 +27,14 @@ interface Items {
   items?: Item[]
 }
 
-function getItems(node, current): Items {
+function getItems(node: Node, current: Item): Items {
   if (!node) {
     return {}
   }
 
   if (node.type === "paragraph") {
-    visit(node, (item) => {
-      if (item.type === "link") {
+    visit(node, (item: Node) => {
+      if (item.type === "link" && 'url' in item && typeof item.url === 'string') {
         current.url = item.url
         current.title = flattenNode(node)
       }
@@ -45,12 +47,12 @@ function getItems(node, current): Items {
     return current
   }
 
-  if (node.type === "list") {
-    current.items = node.children.map((i) => getItems(i, {}))
+  if (node.type === "list" && 'children' in node && Array.isArray(node.children)) {
+    current.items = node.children.map((i: Node) => getItems(i, { title: '', url: '' })).filter((item): item is Item => 'title' in item && 'url' in item)
 
     return current
-  } else if (node.type === "listItem") {
-    const heading = getItems(node.children[0], {})
+  } else if (node.type === "listItem" && 'children' in node && Array.isArray(node.children)) {
+    const heading = getItems(node.children[0], { title: '', url: '' }) as Item
 
     if (node.children.length > 1) {
       getItems(node.children[1], heading)
@@ -62,9 +64,11 @@ function getItems(node, current): Items {
   return {}
 }
 
-const getToc = () => (node, file) => {
+const getToc = () => (node: Root, file: { data?: Record<string, unknown> }) => {
   const table = toc(node)
-  file.data = getItems(table.map, {})
+  if (table.map) {
+    file.data = getItems(table.map, { title: '', url: '' }) as Record<string, unknown>
+  }
 }
 
 export type TableOfContents = Items
@@ -74,5 +78,5 @@ export async function getTableOfContents(
 ): Promise<TableOfContents> {
   const result = await remark().use(getToc).process(content)
 
-  return result.data
+  return result.data as TableOfContents
 }

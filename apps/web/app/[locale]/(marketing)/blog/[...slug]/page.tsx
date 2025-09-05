@@ -18,10 +18,10 @@ import { DateDisplay } from "@/components/ui/date-display"
 import { BlogSchemaMarkup } from "@/components/blog-schema-markup"
 
 interface PostPageProps {
-  params: {
+  params: Promise<{
     locale: string
     slug: string[]
-  }
+  }>
 }
 
 async function getPostFromParams(params: PostPageProps["params"]) {
@@ -110,9 +110,7 @@ export async function generateMetadata({
   }
 }
 
-export async function generateStaticParams(): Promise<
-  Pick<PostPageProps["params"], "slug">[]
-> {
+export async function generateStaticParams() {
   // Only return slug parts here; the parent [locale] segment is handled separately
   return allPosts.map((post) => ({
     slug: post.slugAsParams.split("/"),

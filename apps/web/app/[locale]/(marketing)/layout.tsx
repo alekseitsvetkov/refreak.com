@@ -9,7 +9,7 @@ import { getTranslations } from "next-intl/server"
 
 interface MarketingLayoutProps {
   children: React.ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
 export default async function MarketingLayout({

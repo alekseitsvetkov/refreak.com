@@ -12,7 +12,7 @@ import { SchemaMarkup } from "@/components/schema-markup"
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   const pathname = `/${locale}/blog`;
@@ -34,7 +34,7 @@ export async function generateMetadata({
 export default async function BlogPage({
   params,
 }: {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }) {
   const { locale } = await params;
   

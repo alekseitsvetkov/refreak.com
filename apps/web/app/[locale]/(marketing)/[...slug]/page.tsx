@@ -12,10 +12,10 @@ import { siteConfig } from "@/config/site"
 import { absoluteUrl } from "@/lib/utils"
 
 interface PageProps {
-  params: {
+  params: Promise<{
     locale: Locale
     slug: string[]
-  }
+  }>
 }
 
 async function getPageFromParams(params: PageProps["params"]) {
@@ -76,7 +76,7 @@ export async function generateMetadata({
   }
 }
 
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
+export async function generateStaticParams() {
   return allPages.map((page) => ({
     locale: page.locale as Locale,
     slug: page.slugAsParams.split("/"),
