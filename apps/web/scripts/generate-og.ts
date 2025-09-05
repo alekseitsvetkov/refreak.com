@@ -34,7 +34,7 @@ async function main() {
     params.set("heading", post.title)
     params.set("type", "Blog Post")
     params.set("mode", "dark")
-    params.set("bg", absoluteBg(publicUrl, (post as any).image))
+    params.set("bg", absoluteBg(publicUrl, (post as { image?: string }).image))
 
     const apiUrl = `${publicUrl}/api/og?${params.toString()}`
     const res = await fetch(apiUrl)

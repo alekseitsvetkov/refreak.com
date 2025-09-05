@@ -2,7 +2,7 @@ import { siteConfig } from "@/config/site"
 
 export interface SchemaMarkupProps {
   type: "Organization" | "WebSite" | "SoftwareApplication" | "FAQPage" | "BreadcrumbList" | "Article"
-  data: Record<string, any>
+  data: Record<string, unknown>
 }
 
 export function generateSchemaMarkup({ type, data }: SchemaMarkupProps) {

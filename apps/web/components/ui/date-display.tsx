@@ -35,7 +35,7 @@ export function DateDisplay({
         {formattedDate}
       </time>
     );
-  } catch (error) {
+  } catch {
     return fallback ? <span className={className}>{fallback}</span> : null;
   }
 }

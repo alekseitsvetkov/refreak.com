@@ -1,7 +1,7 @@
 import localFont from "next/font/local"
 import { Inter } from "next/font/google"
 
-import "@/styles/globals.css"
+import "../../styles/globals.css"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster" 

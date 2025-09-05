@@ -3,7 +3,7 @@ import { allAuthors, allPosts } from "@/.contentlayer/generated"
 
 import { Mdx } from "@/components/mdx-components"
 
-import "@/styles/mdx.css"
+// import "@/styles/mdx.css"
 import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
@@ -25,14 +25,14 @@ interface PostPageProps {
 }
 
 async function getPostFromParams(params: PostPageProps["params"]) {
-  const slug = params?.slug?.join("/")
-  const locale = params?.locale
+  const { slug: slugArray, locale } = await params;
+  const slug = slugArray?.join("/")
   const post = allPosts.find(
     (post) => post.slugAsParams === slug && post.locale === locale
   )
 
   if (!post) {
-    null
+    return null
   }
 
   return post
@@ -74,7 +74,6 @@ export async function generateMetadata({
     alternatesLanguages[code] = absoluteUrl(`/${l}${post.slug}`)
   })
 
-  const ogDynamicUrl = ogUrl.toString()
 
   return {
     title: post.title,
@@ -121,6 +120,7 @@ export async function generateStaticParams(): Promise<
 }
 
 export default async function PostPage({ params }: PostPageProps) {
+  const { locale } = await params;
   const post = await getPostFromParams(params)
 
   if (!post) {
@@ -128,9 +128,9 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   // Enable static rendering
-  setRequestLocale(params.locale)
+  setRequestLocale(locale)
 
-  const t = await getTranslations({ locale: params.locale, namespace: "blog" })
+  const t = await getTranslations({ locale, namespace: "blog" })
 
   const authors = post.authors.map((author) =>
     allAuthors.find(({ slug }) => slug === `/authors/${author}`)
@@ -149,7 +149,7 @@ export default async function PostPage({ params }: PostPageProps) {
           image: post.image,
           author: authors?.[0]?.title,
         }}
-        locale={params.locale}
+        locale={locale}
       />
       <article className="container relative py-6 lg:py-10">
       <Link

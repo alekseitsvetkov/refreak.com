@@ -10,10 +10,11 @@ import { absoluteUrl } from "@/lib/utils"
 import { SchemaMarkup } from "@/components/schema-markup"
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
   params: { locale: string };
 }) {
+  const { locale } = await params;
   const pathname = `/${locale}/blog`;
   
   // Enable static rendering for metadata
@@ -35,7 +36,7 @@ export default async function BlogPage({
 }: {
   params: { locale: string }
 }) {
-  const locale = params?.locale
+  const { locale } = await params;
   
   // Enable static rendering
   setRequestLocale(locale)

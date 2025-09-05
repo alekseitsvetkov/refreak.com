@@ -4,7 +4,7 @@ import type { Locale } from "@/i18n/routing"
 
 import { Mdx } from "@/components/mdx-components"
 
-import "@/styles/mdx.css"
+// import "@/styles/mdx.css"
 import { Metadata } from "next"
 
 import { env } from "@/env.mjs"
@@ -19,8 +19,8 @@ interface PageProps {
 }
 
 async function getPageFromParams(params: PageProps["params"]) {
-  const slug = params?.slug?.join("/")
-  const locale = params?.locale
+  const { slug: slugArray, locale } = await params;
+  const slug = slugArray?.join("/")
   if (!slug) return null
 
   // Try exact locale match first, then fallback to EN

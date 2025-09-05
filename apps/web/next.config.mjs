@@ -8,7 +8,14 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["avatars.githubusercontent.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   typescript: {
     // Ignore TypeScript errors during build for now
@@ -18,7 +25,7 @@ const nextConfig = {
   compiler: {
     styledComponents: false,
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config) => {
     // Handle WebAssembly modules
     config.experiments = {
       ...config.experiments,

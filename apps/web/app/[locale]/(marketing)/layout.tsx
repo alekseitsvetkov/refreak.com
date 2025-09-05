@@ -16,7 +16,8 @@ export default async function MarketingLayout({
   children,
   params,
 }: MarketingLayoutProps) {
-  const t = await getTranslations({ locale: params.locale, namespace: "navigation" });
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "navigation" });
   return (
     <div className="relative flex min-h-screen flex-col">
       {/* <div
@@ -27,7 +28,7 @@ export default async function MarketingLayout({
         <div className="flex h-16 items-center justify-between py-6">
           <MainNav items={marketingConfig.mainNav} />
           <Link
-            href={`/${params.locale}/blog`}
+            href={`/${locale}/blog`}
             className={cn(
               buttonVariants({ variant: "link", size: "sm" }),
               "p-0 font-medium text-muted-foreground hover:text-primary"

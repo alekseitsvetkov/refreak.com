@@ -1,7 +1,7 @@
-import {getToken} from "next-auth/jwt"
-import {withAuth} from "next-auth/middleware"
-import {NextResponse} from "@/node_modules/next/server"
-import type {NextRequest} from "@/node_modules/next/server";
+// import {getToken} from "next-auth/jwt"
+// import {withAuth} from "next-auth/middleware"
+// import {NextResponse} from "@/node_modules/next/server"
+// import type {NextRequest} from "@/node_modules/next/server";
 import createMiddleware from "next-intl/middleware";
 import { routing } from "@/i18n/routing";
 

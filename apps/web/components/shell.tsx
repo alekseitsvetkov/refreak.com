@@ -2,7 +2,10 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-interface DashboardShellProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface DashboardShellProps extends React.HTMLAttributes<HTMLDivElement> {
+  children?: React.ReactNode
+  className?: string
+}
 
 export function DashboardShell({
   children,

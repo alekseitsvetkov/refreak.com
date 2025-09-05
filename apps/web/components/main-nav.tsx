@@ -8,14 +8,13 @@ import { MainNavItem } from "@/types"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
-import { MobileNav } from "@/components/mobile-nav"
 
 interface MainNavProps {
   items?: MainNavItem[]
   children?: React.ReactNode
 }
 
-export function MainNav({ items, children }: MainNavProps) {
+export function MainNav({ items }: MainNavProps) {
   const segment = useSelectedLayoutSegment()
   // const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
 
